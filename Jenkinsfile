@@ -3,7 +3,7 @@ pipeline {
   environment {
     DOCKERHUB_CREDENTIALS = 'dockerhub'
     IMAGE_NAME = 'wademo'
-    IMAGE_TAG = '${BUILD_NUMBER}'
+    IMAGE_TAG = "${BUILD_NUMBER}"
   }
   stages {
     stage('Build and Push') {
