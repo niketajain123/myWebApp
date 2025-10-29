@@ -1,10 +1,21 @@
 pipeline {
   agent any
-
+  environment {
+    DOCKERHUB_CREDENTIALS = 'dockerhub'
+    IMAGE_NAME = 'wademo'
+    IMAGE_TAG = '${BUILD_NUMBER}'
+  }
   stages {
-    stage('Build') {
+    stage('Build and Push') {
       steps {
-        echo "building"
+        script {
+          echo "Building Docker image with tag: ${IMAGE_TAG}"
+          docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
+          echo "Pushing Docker image to DockerHub..."
+          docker.withRegistry('https://index.docker.io/v1/',"${DOCKERHUB_CREDENTIALS}") {
+            docker.image("${IMAGE_NAME}:${IMAGE_TAG}").push()
+          }
+        }
       }
     }
     stage('Test') {
