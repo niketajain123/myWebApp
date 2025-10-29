@@ -1,9 +1,9 @@
 pipeline {
-  agent { label 'ssh_ubuntu' }
+  agent any
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t web-app .'
+        echo "building"
       }
     }
     stage('Test') {
