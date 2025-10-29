@@ -2,7 +2,7 @@ pipeline {
   agent any
   environment {
     DOCKERHUB_CREDENTIALS = 'dockerhub'
-    IMAGE_NAME = 'wademo'
+    IMAGE_NAME = 'niketa15jain/wademo'
     IMAGE_TAG = "${BUILD_NUMBER}"
   }
   stages {
