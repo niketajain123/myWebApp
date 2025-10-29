@@ -8,12 +8,12 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'echo "Running tests..."'
+        echo "Running tests..."
       }
     }
     stage('Deploy') {
       steps {
-        sh 'echo "Deploying app..."'
+        echo "Deploying app..."
       }
     }
   }
@@ -25,4 +25,3 @@ pipeline {
       echo 'Build failed!'
     }
   }
-
